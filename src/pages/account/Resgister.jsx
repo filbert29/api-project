@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, Step, StepLabel, Stepper, TextField, Typography } from "@mui/material";
 import { useRef, useState } from "react";
 import Eye from "../../assets/images/register/eye.png";
 import Invisible from "../../assets/images/register/invisible.png"
@@ -20,6 +20,12 @@ const Register = () => {
 
     const [formStep, setFormStep] = useState(1)
 
+    const steps = [
+        'Account',
+        'Profile Detail',
+        'Done',
+      ];
+      
 
     const imageFileRef = useRef()
 
@@ -102,6 +108,15 @@ const Register = () => {
                     fontWeight: "bold",
                     fontFamily: "Poppins"
                 }} >Register</Typography>
+                <Box mb={3} sx={{ width: '100%' }}>
+                    <Stepper activeStep={formStep-1} alternativeLabel>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                </Box>
                 {formStep == 1 ?
                     <Box>
                         <Box>
